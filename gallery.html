@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Gallery | Cosima Octavia</title>
+    <title>Contact | Octavia Studios</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="page-gallery">
+<body class="page-contact">
     <header>
         <div class="logo">Octavia Studios</div>
         <nav>
@@ -22,46 +22,65 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
         </nav>
+
+        <!-- Theme toggle button -->
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+            ☾
+        </button>
     </header>
 
     <main class="page">
-        <h1>Gallery</h1>
+        <h1>Contact</h1>
         <p>
-            Interface screenshots, layout explorations, and visual experiments.
+            If you’d like to connect about roles, collaborations, or projects, you can reach me here:
         </p>
 
-        <section class="gallery-grid">
-            <!-- Replace placeholders with actual <img> tags later -->
-            <figure class="gallery-item">
-                <div class="gallery-placeholder">Image 1</div>
-                <figcaption>UI mock for a horror game menu.</figcaption>
-            </figure>
+        <ul class="contact-list">
+            <li>
+                Email:
+                <a href="mailto:Cosimaoctavia720@gmail.com">Cosimaoctavia720@gmail.com</a>
+            </li>
+            <li>
+                GitHub:
+                <a href="https://github.com/Spookie720" target="_blank" rel="noopener noreferrer">
+                    github.com/Spookie720
+                </a>
+            </li>
+            <li>
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/cosima-octavia-26673438b/" target="_blank"
+                    rel="noopener noreferrer">
+                    linkedin.com/in/cosima-octavia-26673438b
+                </a>
+            </li>
+        </ul>
 
-            <figure class="gallery-item">
-                <div class="gallery-placeholder">Image 2</div>
-                <figcaption>Dashboard layout for a game companion app.</figcaption>
-            </figure>
+        <!-- Static form for now – backend/JS can come later -->
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name">
 
-            <figure class="gallery-item">
-                <div class="gallery-placeholder">Image 3</div>
-                <figcaption>Mobile-first layout exploration.</figcaption>
-            </figure>
-        </section>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Your email">
 
-        <figure class="gallery-item">
-            <div class="gallery-placeholder">Image 4</div>
-            <figcaption>face and life style photos</figcaption>
-        </figure>
-        </section>
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell me a bit about what you’re looking for"></textarea>
+
+            <button type="submit" disabled>Send (coming soon)</button>
+            <p class="form-note">
+                This form is a static placeholder until I hook it up to a backend or form service.
+            </p>
+        </form>
     </main>
 
     <footer>
-        <p> 2025 Cosima Octavia · Web Development Portfolio</p>
+        <p> 2025 Octavia Studios · Web Development Portfolio</p>
     </footer>
+
     <script src="js/main.js"></script>
 </body>
 

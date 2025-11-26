@@ -1,4 +1,6 @@
-/* ---------- Color system & theme ---------- */
+/* ============================================
+   COLOR SYSTEM & THEME
+   ============================================ */
 
 :root {
     /* Core brand colors */
@@ -7,7 +9,7 @@
     --color-crimson: #C42348;
     --color-ink: #191923;
 
-    /* Mode base colors */
+    /* Light/Dark mode base colors */
     --color-bg-light: #CCDDD3;
     --color-bg-dark: #34312D;
 
@@ -30,7 +32,9 @@ body.theme-dark {
     --color-muted: #ccc5d1;
 }
 
-/* ---------- Global reset & typography ---------- */
+/* ============================================
+   GLOBAL RESET & TYPOGRAPHY
+   ============================================ */
 
 *,
 *::before,
@@ -52,15 +56,17 @@ h2,
 h3,
 h4 {
     font-family: "DM Serif Text", serif;
-    letter-spacing: 0.03em;
     margin-top: 0;
+    letter-spacing: 0.03em;
 }
 
 p {
     margin-top: 0;
 }
 
-/* ---------- Layout: header & nav ---------- */
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
 
 header {
     display: flex;
@@ -101,9 +107,9 @@ nav ul {
 
 nav a {
     position: relative;
-    text-decoration: none;
     font-size: 0.9rem;
     padding: 0.3rem 0;
+    text-decoration: none;
     color: var(--color-ink);
 }
 
@@ -111,7 +117,7 @@ body.theme-dark nav a {
     color: #f7f2ff;
 }
 
-/* Nav hover underline */
+/* Hover underline */
 nav a::after {
     content: "";
     position: absolute;
@@ -128,7 +134,9 @@ nav a.active::after {
     width: 100%;
 }
 
-/* ---------- Theme Toggle Button ---------- */
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
 
 .theme-toggle {
     margin-left: 1rem;
@@ -140,7 +148,7 @@ nav a.active::after {
     font-size: 0.9rem;
     line-height: 1;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .theme-toggle:hover {
@@ -152,7 +160,9 @@ body.theme-dark .theme-toggle {
     background: #191923;
 }
 
-/* ---------- Page layout ---------- */
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
 
 main.page,
 .hero,
@@ -176,7 +186,9 @@ main.page,
     }
 }
 
-/* ---------- Hero section ---------- */
+/* ============================================
+   HERO SECTION
+   ============================================ */
 
 .hero {
     display: flex;
@@ -206,8 +218,8 @@ main.page,
     background: linear-gradient(135deg, var(--color-crimson), var(--color-lavender));
     color: #fff;
     font-weight: 600;
-    text-decoration: none;
     font-size: 0.95rem;
+    text-decoration: none;
     box-shadow: var(--shadow-soft);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -217,7 +229,9 @@ main.page,
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.18);
 }
 
-/* ---------- Artsy background blobs ---------- */
+/* ============================================
+   ARTSY BACKGROUND BLOBS
+   ============================================ */
 
 .page-home {
     position: relative;
@@ -250,7 +264,9 @@ main.page,
     left: -40px;
 }
 
-/* ---------- Grids & cards ---------- */
+/* ============================================
+   GRID LAYOUTS & CARDS
+   ============================================ */
 
 .home-grid,
 .skills-grid,
@@ -261,7 +277,6 @@ main.page,
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* Card base styles */
 .card,
 .project-card,
 .gallery-item {
@@ -270,7 +285,7 @@ main.page,
     border: 1px solid var(--color-card-border);
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .card:hover,
@@ -281,18 +296,9 @@ main.page,
     border-color: var(--color-gold-rose);
 }
 
-/* ---------- Page text formatting ---------- */
-
-.page h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.page p {
-    max-width: 50rem;
-}
-
-/* ---------- Project tags ---------- */
+/* ============================================
+   PROJECT TAGS
+   ============================================ */
 
 .project-tags {
     font-size: 0.85rem;
@@ -300,7 +306,9 @@ main.page,
     margin-top: 0.5rem;
 }
 
-/* ---------- Gallery ---------- */
+/* ============================================
+   GALLERY PLACEHOLDERS
+   ============================================ */
 
 .gallery-placeholder {
     height: 160px;
@@ -319,13 +327,14 @@ body.theme-dark .gallery-placeholder {
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ---------- Contact ---------- */
+/* ============================================
+   CONTACT PAGE
+   ============================================ */
 
 .contact-list {
     list-style: none;
     padding: 0;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin: 1rem 0 2rem;
 }
 
 .contact-list li+li {
@@ -381,7 +390,9 @@ body.theme-dark .contact-form textarea {
     color: var(--color-muted);
 }
 
-/* ---------- Footer ---------- */
+/* ============================================
+   FOOTER
+   ============================================ */
 
 footer {
     padding: 1rem 5vw 1.5rem;
@@ -391,7 +402,9 @@ footer {
     margin-top: 2rem;
 }
 
-/* ---------- Responsive tweaks ---------- */
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
 
 @media (max-width: 700px) {
     header {
