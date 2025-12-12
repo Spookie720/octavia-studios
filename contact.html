@@ -16,7 +16,8 @@
 <body class="page-contact">
     <header>
         <div class="logo">Octavia Studios</div>
-        <nav>
+
+        <nav aria-label="Primary">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -27,14 +28,14 @@
             </ul>
         </nav>
 
-        <!-- Theme toggle button -->
         <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
             ☾
         </button>
     </header>
 
-    <main class="page">
+    <main class="page" id="main-content">
         <h1>Contact</h1>
+
         <p>
             If you’d like to connect about roles, collaborations, or projects, you can reach me here:
         </p>
@@ -59,18 +60,19 @@
             </li>
         </ul>
 
-        <!-- Static form for now – backend/JS can come later -->
-        <form class="contact-form">
+        <form class="contact-form" aria-disabled="true">
             <label for="name">Name</label>
-            <input id="name" type="text" placeholder="Your name">
+            <input id="name" name="name" type="text" placeholder="Your name">
 
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="Your email">
+            <input id="email" name="email" type="email" placeholder="Your email">
 
             <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Tell me a bit about what you’re looking for"></textarea>
+            <textarea id="message" name="message" rows="5"
+                placeholder="Tell me a bit about what you’re looking for"></textarea>
 
             <button type="submit" disabled>Send (coming soon)</button>
+
             <p class="form-note">
                 This form is a static placeholder until I hook it up to a backend or form service.
             </p>
@@ -78,7 +80,7 @@
     </main>
 
     <footer>
-        <p> 2025 Octavia Studios · Web Development Portfolio</p>
+        <p>2025 Octavia Studios · Web Development Portfolio</p>
     </footer>
 
     <script src="js/main.js"></script>

@@ -1,35 +1,38 @@
 /* ============================================
-   COLOR SYSTEM & THEME
+   COLOR SYSTEM & THEME (DARK = DEFAULT)
    ============================================ */
 
 :root {
-    /* Core brand colors */
-    --color-gold-rose: #DEA193;
+    /* Core palette */
+    --color-ink: #0b0b10;
+    /* near-black */
+    --color-rose-gold: #DEA193;
+    /* rose gold */
+    --color-cherry: #C42348;
+    /* cherry accent */
+    --color-honeydew: #CCDDD3;
+    /* honeydew */
+
+    /* Supporting accent */
     --color-lavender: #967BB6;
-    --color-crimson: #C42348;
-    --color-ink: #191923;
 
-    /* Light/Dark mode base colors */
-    --color-bg-light: #CCDDD3;
-    --color-bg-dark: #34312D;
-
-    /* Default: light mode */
-    --color-bg: var(--color-bg-light);
-    --color-text: #1c1a1a;
-    --color-card-bg: rgba(255, 255, 255, 0.65);
-    --color-card-border: rgba(25, 25, 35, 0.1);
-    --color-muted: #4d4a46;
-
-    --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.12);
-}
-
-/* DARK MODE OVERRIDES */
-body.theme-dark {
-    --color-bg: var(--color-bg-dark);
+    /* Default theme: DARK */
+    --color-bg: #191923;
     --color-text: #f7f2ff;
     --color-card-bg: rgba(25, 25, 35, 0.95);
-    --color-card-border: rgba(255, 255, 255, 0.12);
+    --color-card-border: rgba(255, 255, 255, 0.14);
     --color-muted: #ccc5d1;
+
+    --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* LIGHT MODE OVERRIDES (add class="theme-light" on <body>) */
+body.theme-light {
+    --color-bg: var(--color-honeydew);
+    --color-text: #1c1a1a;
+    --color-card-bg: rgba(255, 255, 255, 0.85);
+    --color-card-border: rgba(25, 25, 35, 0.12);
+    --color-muted: #4d4a46;
 }
 
 /* ============================================
@@ -42,6 +45,14 @@ body.theme-dark {
     box-sizing: border-box;
 }
 
+html {
+    color-scheme: dark;
+}
+
+body.theme-light {
+    color-scheme: light;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -49,6 +60,9 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* Smooth theme transitions */
+    transition: background-color 240ms ease, color 240ms ease;
 }
 
 h1,
@@ -64,6 +78,15 @@ p {
     margin-top: 0;
 }
 
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
 /* ============================================
    HEADER & NAVIGATION
    ============================================ */
@@ -74,15 +97,15 @@ header {
     align-items: center;
     padding: 1rem 5vw;
     border-bottom: 1px solid var(--color-card-border);
-    background: rgba(204, 221, 211, 0.9);
+    background: rgba(11, 11, 16, 0.96);
     backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 10;
 }
 
-body.theme-dark header {
-    background: rgba(25, 25, 35, 0.9);
+body.theme-light header {
+    background: rgba(204, 221, 211, 0.95);
 }
 
 .logo {
@@ -90,11 +113,11 @@ body.theme-dark header {
     font-size: 1.1rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-ink);
+    color: var(--color-rose-gold);
 }
 
-body.theme-dark .logo {
-    color: #f7f2ff;
+body.theme-light .logo {
+    color: var(--color-ink);
 }
 
 nav ul {
@@ -110,11 +133,11 @@ nav a {
     font-size: 0.9rem;
     padding: 0.3rem 0;
     text-decoration: none;
-    color: var(--color-ink);
+    color: var(--color-text);
 }
 
-body.theme-dark nav a {
-    color: #f7f2ff;
+body.theme-light nav a {
+    color: var(--color-ink);
 }
 
 /* Hover underline */
@@ -125,7 +148,7 @@ nav a::after {
     bottom: -0.15rem;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-crimson), var(--color-lavender));
+    background: linear-gradient(90deg, var(--color-rose-gold), var(--color-cherry));
     transition: width 0.25s ease-out;
 }
 
@@ -147,17 +170,18 @@ nav a.active::after {
     cursor: pointer;
     font-size: 0.9rem;
     line-height: 1;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
 .theme-toggle:hover {
     transform: translateY(-1px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 
-body.theme-dark .theme-toggle {
-    background: #191923;
+body.theme-light .theme-toggle {
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* ============================================
@@ -215,7 +239,7 @@ main.page,
     display: inline-block;
     padding: 0.7rem 1.5rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, var(--color-crimson), var(--color-lavender));
+    background: linear-gradient(135deg, var(--color-cherry), var(--color-rose-gold));
     color: #fff;
     font-weight: 600;
     font-size: 0.95rem;
@@ -226,11 +250,30 @@ main.page,
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Text links used on cards */
+.text-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--color-rose-gold);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+body.theme-light .text-link {
+    color: var(--color-cherry);
+}
+
+.text-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 /* ============================================
-   ARTSY BACKGROUND BLOBS
+   ARTSY BACKGROUND BLOBS (HOME)
    ============================================ */
 
 .page-home {
@@ -245,7 +288,7 @@ main.page,
     z-index: -1;
     border-radius: 999px;
     filter: blur(60px);
-    opacity: 0.35;
+    opacity: 0.4;
 }
 
 .page-home::before {
@@ -259,7 +302,7 @@ main.page,
 .page-home::after {
     width: 220px;
     height: 220px;
-    background: var(--color-crimson);
+    background: var(--color-cherry);
     bottom: -40px;
     left: -40px;
 }
@@ -284,16 +327,29 @@ main.page,
     border-radius: 1.2rem;
     border: 1px solid var(--color-card-border);
     padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out;
 }
 
 .card:hover,
 .project-card:hover,
 .gallery-item:hover {
     transform: translateY(-4px) scale(1.01);
-    box-shadow: var(--shadow-soft);
-    border-color: var(--color-gold-rose);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.7);
+    border-color: var(--color-rose-gold);
+}
+
+/* ============================================
+   PAGE TEXT FORMATTING
+   ============================================ */
+
+.page h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.page p {
+    max-width: 50rem;
 }
 
 /* ============================================
@@ -302,7 +358,7 @@ main.page,
 
 .project-tags {
     font-size: 0.85rem;
-    color: var(--color-crimson);
+    color: var(--color-rose-gold);
     margin-top: 0.5rem;
 }
 
@@ -313,18 +369,18 @@ main.page,
 .gallery-placeholder {
     height: 160px;
     border-radius: 0.9rem;
-    border: 1px dashed rgba(25, 25, 35, 0.25);
+    border: 1px dashed rgba(255, 255, 255, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
     color: var(--color-muted);
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(11, 11, 16, 0.85);
 }
 
-body.theme-dark .gallery-placeholder {
-    background: rgba(25, 25, 35, 0.8);
-    border-color: rgba(255, 255, 255, 0.2);
+body.theme-light .gallery-placeholder {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(25, 25, 35, 0.25);
 }
 
 /* ============================================
@@ -342,8 +398,13 @@ body.theme-dark .gallery-placeholder {
 }
 
 .contact-list a {
-    color: var(--color-crimson);
+    color: var(--color-cherry);
     text-decoration: none;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .contact-form {
@@ -361,25 +422,25 @@ body.theme-dark .gallery-placeholder {
 .contact-form textarea {
     width: 100%;
     border-radius: 0.6rem;
-    border: 1px solid rgba(25, 25, 35, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 0.6rem 0.8rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(5, 5, 10, 0.9);
     color: var(--color-text);
     font: inherit;
 }
 
-body.theme-dark .contact-form input,
-body.theme-dark .contact-form textarea {
-    background: #191923;
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #f7f2ff;
+body.theme-light .contact-form input,
+body.theme-light .contact-form textarea {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(25, 25, 35, 0.25);
+    color: #1c1a1a;
 }
 
 .contact-form button {
     padding: 0.7rem 1.4rem;
     border-radius: 999px;
     border: none;
-    background: rgba(196, 35, 72, 0.7);
+    background: rgba(196, 35, 72, 0.8);
     color: #fff;
     font-weight: 600;
     cursor: not-allowed;

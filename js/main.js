@@ -3,34 +3,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const toggle = document.getElementById("theme-toggle");
-    const THEME_KEY = "octavia-theme";
+    const THEME_KEY = "octavia-theme"; // stores "dark" or "light"
 
-    if (!toggle || !body) return;
+    if (!body || !toggle) return;
 
     function applyTheme(theme) {
-        if (theme === "dark") {
-            body.classList.add("theme-dark");
-            toggle.textContent = "☀"; // sun icon
+        if (theme === "light") {
+            body.classList.add("theme-light");
+            toggle.textContent = "☾"; // indicates switch to dark
         } else {
-            body.classList.remove("theme-dark");
-            toggle.textContent = "☾"; // moon icon
+            body.classList.remove("theme-light");
+            toggle.textContent = "☀"; // indicates switch to light
         }
     }
 
-    // Load stored or system theme
+    // Dark is default. Use saved preference if it exists.
     const saved = localStorage.getItem(THEME_KEY);
 
-    if (saved === "dark" || saved === "light") {
+    if (saved === "light" || saved === "dark") {
         applyTheme(saved);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        applyTheme("dark");
     } else {
-        applyTheme("light");
+        applyTheme("dark");
     }
 
-    // Toggle on click
+    // Toggle between light and dark
     toggle.addEventListener("click", () => {
-        const nextTheme = body.classList.contains("theme-dark") ? "light" : "dark";
+        const isLight = body.classList.contains("theme-light");
+        const nextTheme = isLight ? "dark" : "light";
         localStorage.setItem(THEME_KEY, nextTheme);
         applyTheme(nextTheme);
     });
